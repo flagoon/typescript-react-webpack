@@ -1,5 +1,5 @@
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
-import { hot } from 'react-hot-loader';
 
 interface Props {
   age: number;
@@ -36,4 +36,4 @@ class App extends React.Component<{}, Props> {
   }
 }
 
-export default hot(module)(App);
+export default hot(App);
