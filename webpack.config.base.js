@@ -36,6 +36,8 @@ module.exports = {
       {
         test: /\.(ts|tsx)?$/,
         exclude: /node_modules/,
+        // we use transpilation only, because error checking in on different process.
+        // ForkTsCheckerWebpackPlugin is checking types while in develop mode.
         use: [{ loader: 'ts-loader', options: { transpileOnly: true } }],
       },
       {

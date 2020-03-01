@@ -14,10 +14,14 @@ module.exports = merge(webpackBase, {
     filename: 'app.bundles.js',
   },
   plugins: [
+    // this plugin is checking and reporting problems with typescript types. Without it,
+    // webpack will not report errors, if compilation is correct. If we don't use {transpileOnly: true}
+    // webpack will check types differently and therefore would take more time.
     new ForkTsCheckerWebpackPlugin({
       eslint: true,
       useTypescriptIncrementalApi: true,
     }),
+    // show system notification while typescript has checked types correctly or not.
     new ForkTsCheckerNotifierWebpackPlugin({
       title: 'TypeScript',
       alwaysNotify: true,
