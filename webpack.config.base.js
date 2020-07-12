@@ -10,9 +10,10 @@ module.exports = {
     filename: 'app.bundles.js',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.json', 'jpg'],
     alias: {
       'react-dom': '@hot-loader/react-dom',
+      assets: path.resolve(__dirname, 'src/assets'),
     },
   },
   module: {
@@ -43,6 +44,16 @@ module.exports = {
       {
         test: /\.css$/,
         use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+      },
+      {
+        test: /\.(svg|png|jp?g|gif)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[hash].[ext]',
+            outputPath: 'assets',
+          },
+        },
       },
     ],
   },
