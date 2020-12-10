@@ -7,13 +7,18 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.bundles.js',
+    filename: '[name].[contentHash].js',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json', 'jpg'],
     alias: {
       'react-dom': '@hot-loader/react-dom',
-      assets: path.resolve(__dirname, 'src/assets'),
+      Assets: path.resolve(__dirname, 'src/assets/'),
+      Components: path.resolve(__dirname, 'src/components/'),
+      Api: path.resolve(__dirname, 'src/api/'),
+      Features: path.resolve(__dirname, 'src/features/'),
+      Globals: path.resolve(__dirname, 'src/globals/'),
+      Redux: path.resolve(__dirname, 'src/redux/'),
     },
   },
   module: {
@@ -50,7 +55,7 @@ module.exports = {
         use: {
           loader: 'file-loader',
           options: {
-            name: '[name].[hash].[ext]',
+            name: '[name].[contentHash].[ext]',
             outputPath: 'assets',
           },
         },
